@@ -1,12 +1,12 @@
 package parkinglot;
 
-public class ParkingLotOwner implements ParkingLotObserver {
+public class AirportSecurity implements ParkingLotObserver {
     private boolean isFullCapacity;
 
     public void capacityIsFull(){
         isFullCapacity=true;
     }
     public boolean isCapacityFull() {
-          return this.isFullCapacity;
+        return this.isFullCapacity;
     }
 }
