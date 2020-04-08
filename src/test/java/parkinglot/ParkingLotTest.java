@@ -56,7 +56,7 @@ public class ParkingLotTest {
            parkingLotSystem.registerOwner(owner);
            parkingLotSystem.park(new Object());
        }catch (ParkingLotException e){
-           boolean capacityFull=owner.capacityIsFull();
+           boolean capacityFull=owner.isCapacityFull();
            Assert.assertTrue(capacityFull);
        }
     }
@@ -75,4 +75,19 @@ public class ParkingLotTest {
                 e.printStackTrace();
         }
     }
+
+    @Test
+    public void GivenWhenParkingLotIsFull_ShouldInformSecurity() {
+         AirportSecurity airportSecurity= new AirportSecurity();
+         parkingLotSystem.registerOwner(owner);
+         try {
+            parkingLotSystem.registerOwner(owner);
+             parkingLotSystem.registerSecurity(airportSecurity);
+            parkingLotSystem.park(new Object());
+        }catch (ParkingLotException e){
+            boolean capacityFull=airportSecurity.isCapacityFull();
+            Assert.assertTrue(capacityFull);
+        }
+    }
+
 }
