@@ -7,12 +7,14 @@ import org.junit.Test;
 
 public class ParkingLotTest {
     ParkingLotSystem parkingLotSystem=null;
+    ParkingLotOwner owner=null;
     private Object vehicle;
 
     @Before
     public void setUp() throws Exception{
         vehicle=new Object();
-        parkingLotSystem=new ParkingLotSystem();
+        parkingLotSystem=new ParkingLotSystem(1);
+        owner=new ParkingLotOwner();
     }
 
     @Test
@@ -45,6 +47,32 @@ public class ParkingLotTest {
             Assert.assertTrue(isUnParked);
         }catch (ParkingLotException e){
             e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void GivenWhenParkingLotIsFull_ShouldInformOwnerFullMessage() {
+       try {
+           parkingLotSystem.registerOwner(owner);
+           parkingLotSystem.park(new Object());
+       }catch (ParkingLotException e){
+           boolean capacityFull=owner.capacityIsFull();
+           Assert.assertTrue(capacityFull);
+       }
+    }
+
+    @Test
+    public void givenCapacityIs2_ThenShouldBeAbleToPark2Vehicle() {
+        parkingLotSystem.setCapacity(2);
+        Object vehicle2=new Object();
+           try {
+                parkingLotSystem.park(vehicle);
+                parkingLotSystem.park(vehicle2);
+                boolean isParked1 = parkingLotSystem.isVehicleParked(vehicle);
+                boolean isParked2 = parkingLotSystem.isVehicleParked(vehicle2);
+                Assert.assertTrue(isParked1 && isParked2);
+           }catch (ParkingLotException e){
+                e.printStackTrace();
         }
     }
 }
