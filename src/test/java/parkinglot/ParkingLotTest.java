@@ -53,7 +53,7 @@ public class ParkingLotTest {
     @Test
     public void GivenWhenParkingLotIsFull_ShouldInformOwnerFullMessage() {
        try {
-           parkingLotSystem.registerOwner(owner);
+           parkingLotSystem.registerParkingLotObserver(owner);
            parkingLotSystem.park(new Object());
        }catch (ParkingLotException e){
            boolean capacityFull=owner.isCapacityFull();
@@ -79,12 +79,11 @@ public class ParkingLotTest {
     @Test
     public void GivenWhenParkingLotIsFull_ShouldInformSecurity() {
          AirportSecurity airportSecurity= new AirportSecurity();
-         parkingLotSystem.registerOwner(owner);
-         try {
-            parkingLotSystem.registerOwner(owner);
-             parkingLotSystem.registerSecurity(airportSecurity);
-            parkingLotSystem.park(new Object());
-        }catch (ParkingLotException e){
+          try {
+              parkingLotSystem.park(vehicle);
+              parkingLotSystem.park(new Object());
+              parkingLotSystem.registerParkingLotObserver(owner);
+         }catch (ParkingLotException e){
             boolean capacityFull=airportSecurity.isCapacityFull();
             Assert.assertTrue(capacityFull);
         }
