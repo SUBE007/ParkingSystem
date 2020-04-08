@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="parkinglot.ParkingLotTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-04-08T16:43:56" hostname="SUBE-DELL" time="0.002">
+<testsuite name="parkinglot.ParkingLotTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-04-08T17:12:09" hostname="SUBE-DELL" time="0.008">
   <properties/>
-  <testcase name="givenCapacityIs2_ThenShouldBeAbleToPark2Vehicle" classname="parkinglot.ParkingLotTest" time="0.002"/>
+  <testcase name="GivenWhenParkingLotIsFull_ShouldInformSecurity" classname="parkinglot.ParkingLotTest" time="0.008"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
