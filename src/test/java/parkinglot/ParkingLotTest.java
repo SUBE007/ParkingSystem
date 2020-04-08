@@ -23,7 +23,7 @@ public class ParkingLotTest {
           Assert.assertTrue(isParked);
       }catch (ParkingLotException e){
             e.printStackTrace();
-        }
+      }
     }
 
     @Test
