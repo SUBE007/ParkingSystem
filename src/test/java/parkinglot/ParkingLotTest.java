@@ -13,7 +13,7 @@ public class ParkingLotTest {
     @Before
     public void setUp() throws Exception{
         vehicle=new Object();
-        parkingLotSystem=new ParkingLotSystem(1);
+        parkingLotSystem=new ParkingLotSystem(3);
         owner=new ParkingLotOwner();
     }
 
@@ -43,7 +43,7 @@ public class ParkingLotTest {
     public void givenAVehicle_WhenUnParked_ShouldReturnTrue(){
         try {
             parkingLotSystem.park(vehicle);
-            boolean isUnParked = parkingLotSystem.unPark(vehicle);
+            boolean isUnParked = (boolean) parkingLotSystem.unPark(vehicle);
             Assert.assertTrue(isUnParked);
         }catch (ParkingLotException e){
             e.printStackTrace();
@@ -115,6 +115,7 @@ public class ParkingLotTest {
             e.printStackTrace();
          }
       }
+
     @Test
     public void givenParkingLot_HavingAttendant_WhenParkingLotFullShouldThrowException() {
         try {
@@ -134,6 +135,18 @@ public class ParkingLotTest {
         int slotNo = parkingLotSystem.getSlotNo(vehicle);
         Assert.assertEquals(1,slotNo);
 
+    }
+
+    @Test
+    public void givenParkingSlots_ifVehicleParked_ShouldBeAbleToCharge() {
+        ParkingLotSystem parkingLotSystem1 = new ParkingLotSystem(3);
+        try {
+            parkingLotSystem.registerParkingLotObserver(owner);
+            parkingLotSystem.park(vehicle);
+            Object returnVehicle =parkingLotSystem.unPark(vehicle);
+            Assert.assertEquals(vehicle,returnVehicle);
+        } catch (ParkingLotException e) {
+        }
     }
 }
 
