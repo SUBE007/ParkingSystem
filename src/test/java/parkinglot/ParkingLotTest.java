@@ -104,5 +104,27 @@ public class ParkingLotTest {
         }
     }
 
-
+    @Test
+    public void givenParkingLot_HavingAttendant_shouldBeAbleToParkCar() {
+        try {
+            parkingLotSystem.registerParkingLotObserver(owner);
+            parkingLotSystem.park(vehicle);
+            boolean isVehicleParked = parkingLotSystem.isVehicleParked(vehicle);
+            Assert.assertTrue(isVehicleParked);
+        } catch (ParkingLotException e) {
+            e.printStackTrace();
+         }
+      }
+    @Test
+    public void givenParkingLot_HavingAttendant_WhenParkingLotFullShouldThrowException() {
+        try {
+            parkingLotSystem.registerParkingLotObserver(owner);
+            parkingLotSystem.park(vehicle);
+            parkingLotSystem.park(vehicle);
+            parkingLotSystem.park(vehicle);
+        } catch (ParkingLotException e) {
+            Assert.assertEquals("Parking Lot is Full", e.getMessage());
+        }
+    }
 }
+
