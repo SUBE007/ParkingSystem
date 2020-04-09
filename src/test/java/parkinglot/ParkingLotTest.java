@@ -90,7 +90,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void givenWhenParkingLotSpaceIsAvailableAfterFull_ShouldReturnTrue(){
+    public void givenWhenParkingLotSpaceIsAvailableAfterFull_ShouldReturnTrue() throws ParkingLotException {
         ParkingLotOwner owner=new ParkingLotOwner();
         Object vehicle2=new Object();
         parkingLotSystem.registerParkingLotObserver(owner);
@@ -125,6 +125,15 @@ public class ParkingLotTest {
         } catch (ParkingLotException e) {
             Assert.assertEquals("Parking Lot is Full", e.getMessage());
         }
+    }
+
+    @Test
+    public void givenCarIfInsideParkingLot_ShouldReturnTrue() throws ParkingLotException {
+        Object vehicle1 = new Object();
+        parkingLotSystem.park(vehicle1);
+        int slotNo = parkingLotSystem.getSlotNo(vehicle);
+        Assert.assertEquals(1,slotNo);
+
     }
 }
 
