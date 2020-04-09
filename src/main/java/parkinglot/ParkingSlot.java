@@ -3,12 +3,14 @@ package parkinglot;
 import java.util.Objects;
 
 public class ParkingSlot {
-    public final Object vehicle;
+    public ParkingLot parkingLot;
+    public  Object vehicle;
     private final long vehicleParkingTime;
 
-    public ParkingSlot(Object vehicle) {
+    public ParkingSlot(ParkingLot parkingLotObject, Object vehicle) {
         this.vehicleParkingTime = System.currentTimeMillis();
         this.vehicle = vehicle;
+        this.parkingLot = parkingLotObject;
     }
 
     @Override
