@@ -1,7 +1,7 @@
 package parkinglot;
 
 public class ParkingLotOwner implements ParkingLotObserver {
-    private boolean isFullCapacity;
+    private boolean isFullCapacity;//=false;
 
      @Override
      public void capacityIsFull(){
