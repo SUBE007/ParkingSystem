@@ -43,7 +43,7 @@ public class ParkingLotTest {
     public void givenAVehicle_WhenUnParked_ShouldReturnTrue(){
         try {
             parkingLotSystem.park(vehicle);
-            boolean isUnParked = parkingLotSystem.Unpark(vehicle);
+            boolean isUnParked = parkingLotSystem.unPark(vehicle);
             Assert.assertTrue(isUnParked);
         }catch (ParkingLotException e){
             e.printStackTrace();
@@ -88,5 +88,21 @@ public class ParkingLotTest {
             Assert.assertTrue(capacityFull);
         }
     }
+
+    @Test
+    public void givenWhenParkingLotSpaceIsAvailableAfterFull_ShouldReturnTrue(){
+        ParkingLotOwner owner=new ParkingLotOwner();
+        Object vehicle2=new Object();
+        parkingLotSystem.registerParkingLotObserver(owner);
+        try {
+              parkingLotSystem.park(vehicle);
+              parkingLotSystem.park(vehicle2);
+        }catch (ParkingLotException e){
+            parkingLotSystem.unPark(vehicle);
+            boolean capacityFull=owner.isCapacityFull();
+            Assert.assertFalse(capacityFull);
+        }
+    }
+
 
 }
