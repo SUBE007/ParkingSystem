@@ -18,4 +18,7 @@ public class ParkingLotOwner implements ParkingLotObserver {
     }
 
 
+    public boolean isEmpty() {
+         return  true;
+    }
 }
