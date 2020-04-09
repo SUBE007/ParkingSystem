@@ -3,10 +3,19 @@ package parkinglot;
 public class ParkingLotOwner implements ParkingLotObserver {
     private boolean isFullCapacity;
 
-    public void capacityIsFull(){
+     @Override
+     public void capacityIsFull(){
         isFullCapacity=true;
     }
-    public boolean isCapacityFull() {
-          return this.isFullCapacity;
+
+     public boolean isCapacityFull() {
+        return this.isFullCapacity;
     }
+
+     @Override
+     public void capacityIsAvailable() {
+     isFullCapacity=false;
+    }
+
+
 }
