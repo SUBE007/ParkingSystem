@@ -12,9 +12,8 @@ public class ParkingLotTest {
 
     @Before
     public void setUp() throws Exception{
-        vehicle=new Object();
-        parkingLotSystem=new ParkingLotSystem(3);
-        owner=new ParkingLotOwner();
+         vehicle=new Object();
+         owner=new ParkingLotOwner();
     }
 
     @Test
@@ -139,7 +138,7 @@ public class ParkingLotTest {
 
     @Test
     public void givenParkingSlots_ifVehicleParked_ShouldBeAbleToCharge() {
-        ParkingLotSystem parkingLotSystem1 = new ParkingLotSystem(3);
+        ParkingLotSystem parkingLotSystem1 = new ParkingLotSystem(3,5);
         try {
             parkingLotSystem.registerParkingLotObserver(owner);
             parkingLotSystem.park(vehicle);
@@ -148,5 +147,35 @@ public class ParkingLotTest {
         } catch (ParkingLotException e) {
         }
     }
+    @Test
+    public void givenMultipleParkingLots_ifVehicleComes_ShouldUseEvenDistributionForParking() {
+        ParkingLotSystem parkingLotSystem = new ParkingLotSystem(2,4);
+        parkingLotSystem.registerParkingLotObserver(owner);
+        try {
+
+            parkingLotSystem.park(vehicle);
+            Integer pos1 = parkingLotSystem.findMyCar(vehicle);
+
+            Object vehicle2 = new Object();
+            parkingLotSystem.park(vehicle2);
+            Integer pos2 = parkingLotSystem.findMyCar(vehicle2);
+
+            Object vehicle3 = new Object();
+            parkingLotSystem.park(vehicle3);
+            Integer pos3 = parkingLotSystem.findMyCar(vehicle3);
+
+            Object vehicle4 = new Object();
+            parkingLotSystem.park(vehicle4);
+            Integer pos4 = parkingLotSystem.findMyCar(vehicle4);
+
+            Assert.assertEquals((Integer) 0,pos1);
+            Assert.assertEquals((Integer)0,pos2);
+            Assert.assertEquals((Integer)1,pos3);
+            Assert.assertEquals((Integer)1,pos4);
+        } catch (ParkingLotException e) {
+            e.printStackTrace();
+        }
+    }
 }
+
 
