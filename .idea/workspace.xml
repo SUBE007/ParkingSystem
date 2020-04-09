@@ -12,7 +12,9 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/SUBE007.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/SUBE007.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/exception/ParkingLotException.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/exception/ParkingLotException.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/parkinglot/ParkingLotOwner.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/parkinglot/ParkingLotOwner.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/parkinglot/ParkingLotSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/parkinglot/ParkingLotSystem.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/test/parkinglot/ParkingLotTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/parkinglot/ParkingLotTest.class" afterDir="false" />
@@ -21,9 +23,6 @@
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/parkinglot.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/parkinglot.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-parkinglot.ParkingLotTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-parkinglot.ParkingLotTest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/parkinglot/ParkingLotOwner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parkinglot/ParkingLotOwner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/parkinglot/ParkingLotSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parkinglot/ParkingLotSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/parkinglot/ParkingLotTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/parkinglot/ParkingLotTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +33,16 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view />
+      </state>
+    </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -61,13 +70,13 @@
       <recent name="parkinglot" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.ParkingLotTest.givenCarIfInsideParkingLot_ShouldReturnTrue">
-    <configuration name="ParkingLotTest.GivenWhenParkingLotIsFull_ShouldInformSecurity" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.ParkingLotTest.givenMultipleParkingLots_ifVehicleComes_ShouldUseEvenDistributionForParking">
+    <configuration name="ParkingLotTest.givenAVehicle_WhenUnParked_ShouldReturnTrue" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;parkinglot.ParkingLotTest.GivenWhenParkingLotIsFull_ShouldInformSecurity&quot;" />
+        <option name="scriptParameters" value="--tests &quot;parkinglot.ParkingLotTest.givenAVehicle_WhenUnParked_ShouldReturnTrue&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -102,12 +111,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ParkingLotTest.givenParkingLot_HavingAttendant_WhenParkingLotFullShouldThrowException" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ParkingLotTest.givenMultipleParkingLots_ifVehicleComes_ShouldUseEvenDistributionForParking" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;parkinglot.ParkingLotTest.givenParkingLot_HavingAttendant_WhenParkingLotFullShouldThrowException&quot;" />
+        <option name="scriptParameters" value="--tests &quot;parkinglot.ParkingLotTest.givenMultipleParkingLots_ifVehicleComes_ShouldUseEvenDistributionForParking&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -142,12 +151,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ParkingLotTest.givenWhenParkingLotSpaceIsAvailableAfterFull_ShouldReturnTrue" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ParkingLotTest.givenParkingSlots_ifVehicleParked_ShouldBeAbleToCharge" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;parkinglot.ParkingLotTest.givenWhenParkingLotSpaceIsAvailableAfterFull_ShouldReturnTrue&quot;" />
+        <option name="scriptParameters" value="--tests &quot;parkinglot.ParkingLotTest.givenParkingSlots_ifVehicleParked_ShouldBeAbleToCharge&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -164,11 +173,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.ParkingLotTest.givenMultipleParkingLots_ifVehicleComes_ShouldUseEvenDistributionForParking" />
+        <item itemvalue="Gradle.ParkingLotTest.givenParkingSlots_ifVehicleParked_ShouldBeAbleToCharge" />
+        <item itemvalue="Gradle.ParkingLotTest.givenAVehicle_WhenUnParked_ShouldReturnTrue" />
         <item itemvalue="Gradle.ParkingLotTest.givenCarIfInsideParkingLot_ShouldReturnTrue" />
         <item itemvalue="Gradle.ParkingLotTest.givenParkingLot_HavingAttendant_shouldBeAbleToParkCar" />
-        <item itemvalue="Gradle.ParkingLotTest.givenParkingLot_HavingAttendant_WhenParkingLotFullShouldThrowException" />
-        <item itemvalue="Gradle.ParkingLotTest.givenWhenParkingLotSpaceIsAvailableAfterFull_ShouldReturnTrue" />
-        <item itemvalue="Gradle.ParkingLotTest.GivenWhenParkingLotIsFull_ShouldInformSecurity" />
       </list>
     </recent_temporary>
   </component>
@@ -190,22 +199,26 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="121" y="0" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1586402999692" />
-    <state width="1310" height="3" key="GridCell.Tab.0.bottom" timestamp="1586413473336">
+    <state x="350" y="52" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1586421835301">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1310" height="3" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586413473336" />
-    <state width="1310" height="3" key="GridCell.Tab.0.center" timestamp="1586413473336">
+    <state x="350" y="52" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1366.728@0.0.1366.728" timestamp="1586421835301" />
+    <state width="1310" height="373" key="GridCell.Tab.0.bottom" timestamp="1586458456146">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1310" height="3" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1586413473336" />
-    <state width="1310" height="3" key="GridCell.Tab.0.left" timestamp="1586413473320">
+    <state width="1310" height="373" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586458456146" />
+    <state width="1310" height="373" key="GridCell.Tab.0.center" timestamp="1586458456146">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1310" height="3" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1586413473320" />
-    <state width="1310" height="3" key="GridCell.Tab.0.right" timestamp="1586413473336">
+    <state width="1310" height="373" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1586458456146" />
+    <state width="1310" height="373" key="GridCell.Tab.0.left" timestamp="1586458456146">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1310" height="3" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1586413473336" />
+    <state width="1310" height="373" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1586458456146" />
+    <state width="1310" height="373" key="GridCell.Tab.0.right" timestamp="1586458456146">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1310" height="373" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1586458456146" />
     <state width="1310" height="3" key="GridCell.Tab.1.bottom" timestamp="1586369316916">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
