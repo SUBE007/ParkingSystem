@@ -22,15 +22,6 @@ public class ParkingLot {
         IntStream.range(0, parkingLotSize).forEach(slotNumber -> this.unOccupiedSlotList.add(slotNumber));
      }
 
-    public void parkVehicle(Object vehicle) {
-         vehicleSlotMap.put(unOccupiedSlotList.remove(0), new ParkingSlot(this,vehicle));
-    }
-
-    public void parkVehicle(Integer slotPosition, Object vehicle) {
-         vehicleSlotMap.put(slotPosition, new ParkingSlot(this,vehicle));
-         unOccupiedSlotList.remove(slotPosition);
-    }
-
     public  Integer vehicleLocation (Object vehicle) throws ParkingLotException {
         Integer position;
         try {

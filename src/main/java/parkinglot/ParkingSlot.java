@@ -5,13 +5,15 @@ import parkingstrategy.Vehicle;
 import java.util.Objects;
 
 public class ParkingSlot {
-    public ParkingLot parkingLot;
+    public Integer slotPosition;
     public Vehicle vehicle;
-    private final long vehicleParkingTime;
-    public ParkingSlot(ParkingLot parkingLotObject, Object vehicle) {
+    public long vehicleParkingTime;
+
+
+    public ParkingSlot(Integer slotPosition, Vehicle vehicle) {
         this.vehicleParkingTime = System.currentTimeMillis();
-        this.vehicle = (Vehicle) vehicle;
-        this.parkingLot = parkingLotObject;
+        this.vehicle = vehicle;
+        this.slotPosition = slotPosition;
     }
 
     @Override
