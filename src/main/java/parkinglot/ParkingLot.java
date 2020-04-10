@@ -10,6 +10,9 @@ public class ParkingLot {
     Map<Integer, ParkingSlot> vehicleSlotMap;
     List<Integer> unOccupiedSlotList;
     public List<Slot> slots;
+    private int vehicleCount;
+    private int actualCapacity;
+
     ParkingLot(Integer parkingLotSize) {
         vehicleSlotMap = new HashMap<>();
         unOccupiedSlotList = new ArrayList<Integer>();
@@ -66,5 +69,14 @@ public class ParkingLot {
         });
         return emptySlots;
     }
+
+    public int getNumberOfVehiclesParked() {
+        return this.vehicleCount;
+    }
+
+    public int getNumberOfEmptySlots() {
+        return this.actualCapacity - vehicleCount;
+    }
+
 }
 

@@ -17,5 +17,9 @@ public class ParkingStrategy {
         List<ParkingLot> tempLots = new ArrayList<>(ParkingLotSystem.parkingLotsList);
          return tempLots.get(0);
     }
-
+    public ParkingLot getLotForLargeVehicle() {
+        List<ParkingLot> tempLots = new ArrayList<>(ParkingLotSystem.parkingLotsList);
+        tempLots.sort(Comparator.comparing(lot->lot.getNumberOfEmptySlots()));
+        return tempLots.get(0);
+    }
 }

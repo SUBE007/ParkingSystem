@@ -5,7 +5,8 @@ import java.util.Objects;
 
 public class Slot {
      private int slotNumber;
-    public Vehicle vehicle;
+     public Vehicle vehicle;
+    private LocalDateTime parkingTime;
 
     public Slot(Integer slotNumber) {
         this.slotNumber = slotNumber;
@@ -15,9 +16,10 @@ public class Slot {
         return slotNumber;
     }
 
-//    public LocalDateTime getParkingTime() {
-//        return parkingTime;
-//    }
+    public void setVehicleAndTime(Vehicle vehicle,LocalDateTime parkingTime) {
+         this.vehicle = vehicle;
+         this.parkingTime = parkingTime;
+    }
 
     @Override
     public boolean equals(Object that) {

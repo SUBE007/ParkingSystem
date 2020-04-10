@@ -97,10 +97,11 @@ public class ParkingLotSystem {
                     .getKey();
         }
 
-    public void parkVehicle(DriverType driverType, Object vehicle) throws ParkingLotException {
-         this.parkingLot = assignLot.getLot(driverType);
-         this.parkingLot.parkVehicle(vehicle);
-    }
+
+    public void parkVehicle(Enum parkingStrategy,Object vehicle) throws ParkingLotException {
+        this.parkingLot = assignLot.getLot(parkingStrategy);
+        this.parkingLot.parkVehicle(vehicle);
+}
 
     public ParkingLot getParkedVehicleLot(Object vehicle) {
         ParkingLot parkingLotWithParkedVehicle = parkingLotsList.stream()

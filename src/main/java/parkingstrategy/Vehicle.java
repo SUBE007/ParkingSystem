@@ -1,6 +1,10 @@
 package parkingstrategy;
 
 public class Vehicle {
+    public enum VehicleSize {
+        LARGE
+    }
+
     private String model;
     private String attendantName;
     private String plateNumber;

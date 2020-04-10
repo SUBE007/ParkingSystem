@@ -6,9 +6,12 @@ import parkinglot.ParkingLot;
 public class AssignLot {
     ParkingStrategy strategy = new ParkingStrategy();
 
-    public ParkingLot getLot(DriverType driverType) throws ParkingLotException {
-        if(driverType.equals(DriverType.HANDICAP))
+    public ParkingLot getLot(Enum parkingBasedOn) throws ParkingLotException {
+        if (parkingBasedOn.equals(DriverType.HANDICAP))
             return strategy.getLotForHandicapDriver();
-        return strategy.getLotForNormalDriver();
+        else if (parkingBasedOn.equals(Vehicle.VehicleSize.LARGE))
+            return strategy.getLotForLargeVehicle();
+        else
+            return strategy.getLotForNormalDriver();
     }
 }
