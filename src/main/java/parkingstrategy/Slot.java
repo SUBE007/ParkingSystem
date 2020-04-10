@@ -12,10 +12,6 @@ public class Slot {
         this.slotNumber = slotNumber;
     }
 
-    public int getSlotNumber() {
-        return slotNumber;
-    }
-
     public void setVehicleAndTime(Vehicle vehicle,LocalDateTime parkingTime) {
          this.vehicle = vehicle;
          this.parkingTime = parkingTime;

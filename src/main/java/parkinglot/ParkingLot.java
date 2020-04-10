@@ -8,16 +8,19 @@ import java.util.stream.IntStream;
 
 public class ParkingLot {
     Map<Integer, ParkingSlot> vehicleSlotMap;
-    List<Integer> unOccupiedSlotList;
+    public List<Integer> unOccupiedSlotList;
+    public List<ParkingSlot> listOfOccupiedSlots;
     public List<Slot> slots;
     private int vehicleCount;
     private int actualCapacity;
+    public int noOfVehicleParked;
+
 
     ParkingLot(Integer parkingLotSize) {
         vehicleSlotMap = new HashMap<>();
         unOccupiedSlotList = new ArrayList<Integer>();
         IntStream.range(0, parkingLotSize).forEach(slotNumber -> this.unOccupiedSlotList.add(slotNumber));
-    }
+     }
 
     public void parkVehicle(Object vehicle) {
          vehicleSlotMap.put(unOccupiedSlotList.remove(0), new ParkingSlot(this,vehicle));

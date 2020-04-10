@@ -1,15 +1,16 @@
 package parkinglot;
 
+import parkingstrategy.Vehicle;
+
 import java.util.Objects;
 
 public class ParkingSlot {
     public ParkingLot parkingLot;
-    public  Object vehicle;
+    public Vehicle vehicle;
     private final long vehicleParkingTime;
-
     public ParkingSlot(ParkingLot parkingLotObject, Object vehicle) {
         this.vehicleParkingTime = System.currentTimeMillis();
-        this.vehicle = vehicle;
+        this.vehicle = (Vehicle) vehicle;
         this.parkingLot = parkingLotObject;
     }
 

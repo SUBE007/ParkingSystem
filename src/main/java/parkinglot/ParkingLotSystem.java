@@ -3,8 +3,12 @@ package parkinglot;
 import exception.ParkingLotException;
 import parkingstrategy.AssignLot;
 import parkingstrategy.DriverType;
+import parkingstrategy.ParkingStrategy;
+import parkingstrategy.Vehicle;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 
@@ -31,10 +35,10 @@ public class ParkingLotSystem {
             IntStream.range(0, noOfLots).forEach(slotNumber -> this.parkingLots.add(new ParkingLot(actualCapacity)));
         }
 
-    public ParkingLotSystem() {
-        this.parkingLots = new ArrayList<>();
-        this.assignLot = new AssignLot();
-    }
+        public ParkingLotSystem() {
+            this.parkingLots = new ArrayList<>();
+            this.assignLot = new AssignLot();
+        }
 
         public void setCapacity(int capacity) {
             this.actualCapacity = capacity;
@@ -45,21 +49,15 @@ public class ParkingLotSystem {
 
         }
 
-        public void park(Object vehicle) throws ParkingLotException {
-             if (mapData.size() == this.actualCapacity) {
-                for (ParkingLotObserver observer : parkingLotObserver) {
+        public void park(Vehicle vehicle, ParkingStrategy strategy) throws ParkingLotException {
+            AtomicReference<Integer> totalSlotOccupied = new AtomicReference<>(0);
+            parkingLots.stream().forEach(parkingLot1 -> totalSlotOccupied.updateAndGet(v -> v + parkingLot1.noOfVehicleParked));
+            if (totalSlotOccupied.get() == actualCapacity) {
+                for (ParkingLotObserver observer : parkingLotObserver)
                     observer.capacityIsFull();
-                }
-                throw new ParkingLotException("Vehicle already Parked", ParkingLotException.ExceptionType.PARKING_LOT_FULL);
+                throw new ParkingLotException("Parking lot is full", ParkingLotException.ExceptionType.PARKING_LOT_FULL);
             }
-            ArrayList<ParkingLot> lotListOfHighestEmptySlots = parkingLots;
-            Collections.sort(lotListOfHighestEmptySlots,Comparator.comparing(list ->list.unOccupiedSlotList.size(),Comparator.reverseOrder()));
-            parkingLot = lotListOfHighestEmptySlots.get(0);
-            parkingLot.parkVehicle(vehicle);
-            for (ParkingLot thisParkingLot: parkingLots )
-                if (thisParkingLot.equals(parkingLot)) {
-                    thisParkingLot = parkingLot;
-                }
+            parkingLots = strategy.parkVehicle(parkingLots, vehicle);
         }
 
         public Object unPark(Object vehicle) throws ParkingLotException {
@@ -87,21 +85,17 @@ public class ParkingLotSystem {
             return key;
         }
 
-        public Integer findMyCar (Object vehicle){
-            return parkingLot.vehicleSlotMap
-                    .entrySet()
-                    .stream()
-                    .filter(a -> a.getValue().equals(vehicle))
-                    .findFirst()
-                    .orElse(null)
-                    .getKey();
+    public ArrayList<ParkingSlot> findCarsWithColor(Vehicle.VehicleColor vehicleColor)  {
+        ArrayList<ParkingSlot> slotArrayList = new ArrayList<>();
+        for (ParkingLot lot: parkingLots ) {
+            List<ParkingSlot> parkingSlotList  = (lot.listOfOccupiedSlots).stream()
+                    .filter(slot -> slot.vehicle != null
+                            && slot.vehicle.vehicleColor == vehicleColor)
+                    .collect(Collectors.toList());
+            slotArrayList.addAll(parkingSlotList);
         }
-
-
-    public void parkVehicle(Enum parkingStrategy,Object vehicle) throws ParkingLotException {
-        this.parkingLot = assignLot.getLot(parkingStrategy);
-        this.parkingLot.parkVehicle(vehicle);
-}
+        return slotArrayList;
+    }
 
     public ParkingLot getParkedVehicleLot(Object vehicle) {
         ParkingLot parkingLotWithParkedVehicle = parkingLotsList.stream()

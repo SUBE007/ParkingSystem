@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class ParkingStrategy {
-    public ParkingLot getLotForHandicapDriver() throws ParkingLotException {
+public interface ParkingStrategy {
+   /* public ParkingLot getLotForHandicapDriver() throws ParkingLotException {
        return ParkingLotSystem.parkingLotsList.stream().filter(parkingLot -> parkingLot.getEmptySlots().size() > 0)
                 .findFirst().orElseThrow(() -> new ParkingLotException(ParkingLotException.ExceptionType.PARKING_LOT_CAPACITY_FULL,""));
     }
@@ -22,4 +22,6 @@ public class ParkingStrategy {
         tempLots.sort(Comparator.comparing(lot->lot.getNumberOfEmptySlots()));
         return tempLots.get(0);
     }
+*/
+   public ArrayList<ParkingLot> parkVehicle(ArrayList<ParkingLot> parkingLots, Vehicle vehicle) throws ParkingLotException;
 }
