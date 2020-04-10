@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import parkingstrategy.DriverType;
+import parkingstrategy.Vehicle;
 
 public class ParkingLotTest {
     ParkingLotSystem parkingLotSystem=null;
@@ -190,6 +191,32 @@ public class ParkingLotTest {
             ParkingLot parkedVehicleLot = parkingLotSystem.getParkedVehicleLot(vehicle2);
             Assert.assertEquals(parkingLotSystem.parkingLotsList.get(0),parkedVehicleLot);
         } catch (ParkingLotException e) {
+        }
+    }
+
+    @Test
+    public void givenLargeVehicle_ShouldParkVehicleAtMoreFreeSpace() {
+        try {
+            parkingLotSystem.registerParkingLotObserver(owner);
+            Object vehicle1 = new Object();
+            Object vehicle2 = new Object();
+            Object vehicle3 = new Object();
+            Object vehicle4 = new Object();
+            Object vehicle5 = new Object();
+            Object vehicle6 = new Object();
+            parkingLotSystem=new ParkingLotSystem(2,3);
+            parkingLotSystem.parkVehicle(DriverType.NORMAL, vehicle1);
+            parkingLotSystem.parkVehicle(DriverType.NORMAL, vehicle2);
+            parkingLotSystem.parkVehicle(DriverType.NORMAL, vehicle3);
+            parkingLotSystem.parkVehicle(DriverType.NORMAL, vehicle4);
+            parkingLotSystem.parkVehicle(DriverType.NORMAL, vehicle5);
+            parkingLotSystem.unPark(vehicle2);
+            parkingLotSystem.unPark(vehicle3);
+            parkingLotSystem.parkVehicle(Vehicle.VehicleSize.LARGE, vehicle6);
+            ParkingLot parkedVehicleLot = parkingLotSystem.getParkedVehicleLot(vehicle5);
+            Assert.assertEquals(parkingLotSystem.parkingLotsList.get(0), parkedVehicleLot);
+        } catch (ParkingLotException e) {
+            e.printStackTrace();
         }
     }
 }
