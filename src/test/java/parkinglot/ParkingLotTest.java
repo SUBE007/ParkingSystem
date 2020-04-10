@@ -26,8 +26,8 @@ public class ParkingLotTest {
         parkingLotSystem.registerParkingLotObserver(owner);
         parkingLotSystem.park(vehicle, new NormalParkingStrategy());
         try {
-            Vehicle vehicle2 = new Vehicle(Vehicle.VehicleColor.OTHER);
-            parkingLotSystem.park(vehicle2, new HandicapParkingStrategy());
+             Vehicle vehicle2 = new Vehicle(Vehicle.VehicleColor.OTHER);
+             parkingLotSystem.park(vehicle2, new HandicapParkingStrategy());
 
             Vehicle vehicle3 = new Vehicle(Vehicle.VehicleColor.WHITE);
             parkingLotSystem.park(vehicle3, new LargeVehicleParkingStrategy());
