@@ -1,6 +1,8 @@
 package parkinglot;
 
 import exception.ParkingLotException;
+import parkingstrategy.AssignLot;
+import parkingstrategy.DriverType;
 
 import java.util.*;
 import java.util.stream.IntStream;
@@ -10,12 +12,14 @@ public class ParkingLotSystem {
     private int actualCapacity;
     private int noOfLots;
     private ArrayList<ParkingLot> parkingLots;
+    public static List<ParkingLot> parkingLotsList;
     private List vehicles;
     private List<ParkingLotObserver> parkingLotObserver;
     Map<Integer, Object> mapData = new HashMap<>();
     public static int key = 0;
     List<Integer> unOccupiedSlotList;
     public ParkingLot parkingLot;
+    public AssignLot assignLot;
 
         public ParkingLotSystem(int noOfLots,int capacity) {
             this.parkingLotObserver = new ArrayList();
@@ -26,6 +30,11 @@ public class ParkingLotSystem {
             this.noOfLots = noOfLots;
             IntStream.range(0, noOfLots).forEach(slotNumber -> this.parkingLots.add(new ParkingLot(actualCapacity)));
         }
+
+    public ParkingLotSystem() {
+        this.parkingLots = new ArrayList<>();
+        this.assignLot = new AssignLot();
+    }
 
         public void setCapacity(int capacity) {
             this.actualCapacity = capacity;
@@ -88,8 +97,19 @@ public class ParkingLotSystem {
                     .getKey();
         }
 
-
+    public void parkVehicle(DriverType driverType, Object vehicle) throws ParkingLotException {
+         this.parkingLot = assignLot.getLot(driverType);
+         this.parkingLot.parkVehicle(vehicle);
     }
+
+    public ParkingLot getParkedVehicleLot(Object vehicle) {
+        ParkingLot parkingLotWithParkedVehicle = parkingLotsList.stream()
+                .filter(parkingLot -> parkingLot.isVehiclePresent(vehicle))
+                .findFirst()
+                .orElse(null);
+        return parkingLotWithParkedVehicle;
+    }
+}
 
 
 
