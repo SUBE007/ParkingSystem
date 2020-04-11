@@ -20,7 +20,7 @@ public class ParkingLotTest {
         owner = new ParkingLotOwner();
     }
 
- /*   @Test
+    @Test
     public void givenMultipleParkingLotsWithCars_IfWhiteCarFound_ShouldReturnVehicle() throws ParkingLotException {
         ParkingLotSystem parkingLotSystem = new ParkingLotSystem(2, 4);
         parkingLotSystem.registerParkingLotObserver(owner);
@@ -41,7 +41,7 @@ public class ParkingLotTest {
         } catch (ParkingLotException |NullPointerException e) {
             e.printStackTrace();
         }
-    }*/
+    }
 
     @Test
     public void givenMultipleParkingLotsWithCars_IfFoundBlueToyota_ShouldReturnItsInformation() {
