@@ -7,7 +7,9 @@ import org.junit.Before;
 import org.junit.Test;
 import parkingstrategy.*;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ParkingLotTest {
     ParkingLotSystem parkingLotSystem = null;
@@ -20,7 +22,7 @@ public class ParkingLotTest {
         owner = new ParkingLotOwner();
     }
 
- /*   @Test
+    @Test
     public void givenMultipleParkingLotsWithCars_IfWhiteCarFound_ShouldReturnVehicle() throws ParkingLotException {
         ParkingLotSystem parkingLotSystem = new ParkingLotSystem(2, 4);
         parkingLotSystem.registerParkingLotObserver(owner);
@@ -41,7 +43,7 @@ public class ParkingLotTest {
         } catch (ParkingLotException |NullPointerException e) {
             e.printStackTrace();
         }
-    }*/
+    }
 
     @Test
     public void givenMultipleParkingLotsWithCars_IfFoundBlueToyota_ShouldReturnItsInformation() {
@@ -73,7 +75,6 @@ public class ParkingLotTest {
         parkingLotSystem.registerParkingLotObserver(owner);
         try {
             parkingLotSystem.park(vehicle, new NormalParkingStrategy());
-
             Vehicle vehicle2 = new Vehicle("UP44 S007", Vehicle.VehicleColor.BLUE, Vehicle.VehicleType.BMW);
             parkingLotSystem.park(vehicle2, new HandicapParkingStrategy());
             Vehicle vehicle3 = new Vehicle("UP44 U007", Vehicle.VehicleColor.OTHER, Vehicle.VehicleType.TOYOTA);
@@ -88,6 +89,27 @@ public class ParkingLotTest {
 
     }
 
+    @Test
+    public void givenCarWhenPark_ItShouldReturnCarThatHasBeenParkedInTheLast30Minutes() throws ParkingLotException {
+        ParkingLotSystem parkingLotSystem = new ParkingLotSystem(1, 4);
+        parkingLotSystem.registerParkingLotObserver(owner);
+        try {
+            parkingLotSystem.park(vehicle, new NormalParkingStrategy());
+            Vehicle vehicle2 = new Vehicle("UP44 S007", Vehicle.VehicleColor.BLUE, Vehicle.VehicleType.BMW, LocalTime.now());
+            parkingLotSystem.park(vehicle2, new HandicapParkingStrategy());
+            Vehicle vehicle3 = new Vehicle("UP44 U007", Vehicle.VehicleColor.OTHER, Vehicle.VehicleType.TOYOTA,LocalTime.now());
+            parkingLotSystem.park(vehicle3, new NormalParkingStrategy());
+            Vehicle vehicle4 = new Vehicle("UP44 B007", Vehicle.VehicleColor.WHITE, Vehicle.VehicleType.TOYOTA,LocalTime.now());
+            parkingLotSystem.park(vehicle4, new NormalParkingStrategy());
+            vehicle2.time= LocalTime.now().minusMinutes(30);
+            vehicle3.time=LocalTime.now().minusMinutes(40);
+            List<Integer> carWithin30Min = parkingLotSystem.getCarWithin30Min();
+            Assert.assertTrue(carWithin30Min.contains(3));
+            Assert.assertTrue(carWithin30Min.contains(40));
+        }catch (ParkingLotException e){
+            e.printStackTrace();
+        }
+    }
 }
 
 

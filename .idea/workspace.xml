@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="bbfc595f-b5df-40cd-9077-64bbdcff1eb3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/parkinglot/ParkingLotSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parkinglot/ParkingLotSystem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/parkingstrategy/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parkingstrategy/Vehicle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/parkinglot/ParkingLotTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/parkinglot/ParkingLotTest.java" afterDir="false" />
     </list>
@@ -53,13 +54,13 @@
       <recent name="parkinglot" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.ParkingLotTest.givenCars_WhenPark_ItShouldAbleToFindBMWCars">
-    <configuration name="ParkingLotTest.givenCars_WhenPark_ItShouldAbleToFindBMWCars" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.ParkingLotTest.givenCarWhenPark_ItShouldReturnCarThatHasBeenParkedInTheLast30Minutes">
+    <configuration name="ParkingLotTest.givenCarWhenPark_ItShouldReturnCarThatHasBeenParkedInTheLast30Minutes" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;parkinglot.ParkingLotTest.givenCars_WhenPark_ItShouldAbleToFindBMWCars&quot;" />
+        <option name="scriptParameters" value="--tests &quot;parkinglot.ParkingLotTest.givenCarWhenPark_ItShouldReturnCarThatHasBeenParkedInTheLast30Minutes&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -74,12 +75,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ParkingLotTest.givenLargeVehicle_ShouldParkVehicleAtMoreFreeSpace" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ParkingLotTest.givenCars_WhenPark_ItShouldAbleToFindBMWCars" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;parkinglot.ParkingLotTest.givenLargeVehicle_ShouldParkVehicleAtMoreFreeSpace&quot;" />
+        <option name="scriptParameters" value="--tests &quot;parkinglot.ParkingLotTest.givenCars_WhenPark_ItShouldAbleToFindBMWCars&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -156,11 +157,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.ParkingLotTest.givenCarWhenPark_ItShouldReturnCarThatHasBeenParkedInTheLast30Minutes" />
         <item itemvalue="Gradle.ParkingLotTest.givenCars_WhenPark_ItShouldAbleToFindBMWCars" />
         <item itemvalue="Gradle.ParkingLotTest.givenMultipleParkingLotsWithCars_IfFoundBlueToyota_ShouldReturnItsInformation" />
         <item itemvalue="Gradle.ParkingLotTest.givenMultipleParkingLotsWithCars_IfWhiteCarFound_ShouldReturnVehicle" />
         <item itemvalue="Gradle.ParkingLotTest.givenVehicle_WhenParked_ShouldReturnTrue" />
-        <item itemvalue="Gradle.ParkingLotTest.givenLargeVehicle_ShouldParkVehicleAtMoreFreeSpace" />
       </list>
     </recent_temporary>
   </component>
@@ -186,22 +187,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="350" y="52" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1366.728@0.0.1366.728" timestamp="1586421835301" />
-    <state width="1310" height="261" key="GridCell.Tab.0.bottom" timestamp="1586572951311">
+    <state width="1310" height="261" key="GridCell.Tab.0.bottom" timestamp="1586577655301">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1310" height="261" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586572951311" />
-    <state width="1310" height="261" key="GridCell.Tab.0.center" timestamp="1586572951311">
+    <state width="1310" height="261" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586577655301" />
+    <state width="1310" height="261" key="GridCell.Tab.0.center" timestamp="1586577655301">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1310" height="261" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1586572951311" />
-    <state width="1310" height="261" key="GridCell.Tab.0.left" timestamp="1586572951311">
+    <state width="1310" height="261" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1586577655301" />
+    <state width="1310" height="261" key="GridCell.Tab.0.left" timestamp="1586577655301">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1310" height="261" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1586572951311" />
-    <state width="1310" height="261" key="GridCell.Tab.0.right" timestamp="1586572951311">
+    <state width="1310" height="261" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1586577655301" />
+    <state width="1310" height="261" key="GridCell.Tab.0.right" timestamp="1586577655301">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1310" height="261" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1586572951311" />
+    <state width="1310" height="261" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1586577655301" />
     <state width="1310" height="3" key="GridCell.Tab.1.bottom" timestamp="1586369316916">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

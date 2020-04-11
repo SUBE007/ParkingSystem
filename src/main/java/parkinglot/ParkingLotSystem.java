@@ -7,6 +7,7 @@ import parkingstrategy.DriverType;
 import parkingstrategy.ParkingStrategy;
 import parkingstrategy.Vehicle;
 
+import java.time.LocalTime;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
@@ -21,6 +22,7 @@ public class ParkingLotSystem {
     private List vehicles;
     private List<ParkingLotObserver> parkingLotObserver;
     Map<Integer, Object> mapData = new HashMap<>();
+    List<Integer> timeList = new ArrayList<>();
     public static int key = 0;
     List<Integer> unOccupiedSlotList;
     public ParkingLot parkingLot;
@@ -100,6 +102,21 @@ public class ParkingLotSystem {
         return vehicleDTOS;
     }
 
+    public List<Integer> getCarWithin30Min() {
+        for( int i=1;i<=actualCapacity ;i++ )
+        {
+            if(mapData.get(i)!=null)
+            {
+                Vehicle o = (Vehicle) mapData.get(i);
+                LocalTime parkTime = o.time;
+                LocalTime currentTimeThirtyMinAgo = LocalTime.now().minusMinutes(30);
+
+                int compare = currentTimeThirtyMinAgo.compareTo(parkTime);
+                if(compare==1)
+                    timeList.add(i); }
+        }
+        return timeList;
+    }
     public ParkingLot getParkedVehicleLot(Object vehicle) {
         ParkingLot parkingLotWithParkedVehicle = parkingLotsList.stream()
                 .filter(parkingLot -> parkingLot.isVehiclePresent(vehicle))

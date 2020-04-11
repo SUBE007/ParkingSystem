@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="parkinglot.ParkingLotTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2020-04-11T02:42:25" hostname="SUBE-DELL" time="0.156">
+<testsuite name="parkinglot.ParkingLotTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2020-04-11T04:01:56" hostname="SUBE-DELL" time="0.242">
   <properties/>
-  <testcase name="givenCars_WhenPark_ItShouldAbleToFindBMWCars" classname="parkinglot.ParkingLotTest" time="0.156">
+  <testcase name="givenCarWhenPark_ItShouldReturnCarThatHasBeenParkedInTheLast30Minutes" classname="parkinglot.ParkingLotTest" time="0.242">
     <failure message="java.lang.NullPointerException" type="java.lang.NullPointerException">java.lang.NullPointerException
 	at parkingstrategy.NormalParkingStrategy.parkVehicle(NormalParkingStrategy.java:11)
-	at parkinglot.ParkingLotSystem.park(ParkingLotSystem.java:61)
-	at parkinglot.ParkingLotTest.givenCars_WhenPark_ItShouldAbleToFindBMWCars(ParkingLotTest.java:75)
+	at parkinglot.ParkingLotSystem.park(ParkingLotSystem.java:63)
+	at parkinglot.ParkingLotTest.givenCarWhenPark_ItShouldReturnCarThatHasBeenParkedInTheLast30Minutes(ParkingLotTest.java:97)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
