@@ -66,6 +66,28 @@ public class ParkingLotTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void givenCars_WhenPark_ItShouldAbleToFindBMWCars() throws ParkingLotException {
+        ParkingLotSystem parkingLotSystem = new ParkingLotSystem(1, 4);
+        parkingLotSystem.registerParkingLotObserver(owner);
+        try {
+            parkingLotSystem.park(vehicle, new NormalParkingStrategy());
+
+            Vehicle vehicle2 = new Vehicle("UP44 S007", Vehicle.VehicleColor.BLUE, Vehicle.VehicleType.BMW);
+            parkingLotSystem.park(vehicle2, new HandicapParkingStrategy());
+            Vehicle vehicle3 = new Vehicle("UP44 U007", Vehicle.VehicleColor.OTHER, Vehicle.VehicleType.TOYOTA);
+            parkingLotSystem.park(vehicle3, new NormalParkingStrategy());
+            Vehicle vehicle4 = new Vehicle("UP44 B007", Vehicle.VehicleColor.WHITE, Vehicle.VehicleType.TOYOTA);
+            parkingLotSystem.park(vehicle4, new NormalParkingStrategy());
+            ArrayList<VehicleDTO> listOfVehicles = parkingLotSystem.findCarsWithColor(Vehicle.VehicleColor.BLUE, Vehicle.VehicleType.TOYOTA);
+            Assert.assertEquals(vehicle2.vehicleColor, listOfVehicles.get(0).vehicleType);
+        }catch (ParkingLotException e){
+            e.printStackTrace();
+        }
+
+    }
+
 }
 
 
