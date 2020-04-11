@@ -3,7 +3,8 @@ package parkingstrategy;
 import java.time.LocalTime;
 
 public class Vehicle {
-        public enum VehicleColor {WHITE, BLUE, OTHER}
+
+    public enum VehicleColor {WHITE, BLUE, OTHER}
         public enum VehicleType {TOYOTA,BMW,LARGE,SMALL}
         public Integer lot;
         public  VehicleType vehicleType;
@@ -24,8 +25,17 @@ public class Vehicle {
             this.time=time;
         }
 
+        public Vehicle(DriverType type, VehicleColor Color, VehicleType size) {
+          this.type=type;
+          this.vehicleColor=Color;
+          this.vehicleType=size;
+        }
+
         public LocalTime getTime(){
             return time;
+        }
+        public DriverType getType() {
+        return type;
         }
     @Override
     public String toString() {

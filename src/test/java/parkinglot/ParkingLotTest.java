@@ -23,7 +23,7 @@ public class ParkingLotTest {
         owner = new ParkingLotOwner();
     }
 
-    @Test
+  /*  @Test
     public void givenMultipleParkingLotsWithCars_IfWhiteCarFound_ShouldReturnVehicle() throws ParkingLotException {
         ParkingLotSystem parkingLotSystem = new ParkingLotSystem(2, 4);
         parkingLotSystem.registerParkingLotObserver(owner);
@@ -118,6 +118,18 @@ public class ParkingLotTest {
         parkingLotSystem.park(vehicle1,new NormalParkingStrategy());
         Map<Integer, Vehicle> lotData = parkingLotSystem.getLotData(1,DriverType.HANDICAP);
         Assert.assertEquals(1,lotData.size());
+    }
+    */
+
+    @Test
+    public void givenAVehicle_whenParked_shouldReturn_AllVehicleDetails() throws ParkingLotException {
+        parkingLotSystem.park(new Vehicle(DriverType.HANDICAP, Vehicle.VehicleColor.BLUE, Vehicle.VehicleType.LARGE));
+        parkingLotSystem.park(new Vehicle(DriverType.HANDICAP, Vehicle.VehicleColor.WHITE, Vehicle.VehicleType.SMALL));
+        parkingLotSystem.park(new Vehicle(DriverType.NORMAL, Vehicle.VehicleColor.BLUE, Vehicle.VehicleType.LARGE));
+        parkingLotSystem.park(new Vehicle(DriverType.NORMAL,Vehicle.VehicleColor.BLUE, Vehicle.VehicleType.SMALL));
+        parkingLotSystem.park(new Vehicle(DriverType.NORMAL, Vehicle.VehicleColor.OTHER, Vehicle.VehicleType.LARGE));
+        Map<Integer, Vehicle> allVehicleDetails = parkingLotSystem.getAllDetailsOfVehicles();
+        Assert.assertEquals(5,allVehicleDetails.size());
     }
 }
 

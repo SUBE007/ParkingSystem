@@ -4,7 +4,7 @@
     <list default="true" id="bbfc595f-b5df-40cd-9077-64bbdcff1eb3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/parkinglot/ParkingLotSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parkinglot/ParkingLotSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/parkingstrategy/AssignLot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parkingstrategy/AssignLot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/parkingstrategy/DriverType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parkingstrategy/DriverType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/parkingstrategy/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parkingstrategy/Vehicle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/parkinglot/ParkingLotTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/parkinglot/ParkingLotTest.java" afterDir="false" />
     </list>

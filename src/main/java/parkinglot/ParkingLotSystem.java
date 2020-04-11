@@ -15,77 +15,84 @@ import java.util.stream.IntStream;
 
 
 public class ParkingLotSystem {
-    private int actualCapacity;
-    private int noOfLots;
+    public int actualCapacity;
+    public int noOfLots;
     private ArrayList<ParkingLot> parkingLots;
     public static List<ParkingLot> parkingLotsList;
     private List vehicles;
     private List<ParkingLotObserver> parkingLotObserver;
-    Map<Integer, Object> mapData = new HashMap<>();
-    List<Integer> timeList = new ArrayList<>();
+    public Map<Integer, Object> mapData = new HashMap<>();
+    public List<Integer> timeList = new ArrayList<>();
     public static int key = 0;
-    List<Integer> unOccupiedSlotList;
+    public List<Integer> unOccupiedSlotList;
     public ParkingLot parkingLot;
     public AssignLot assignLot;
 
-        public ParkingLotSystem(int noOfLots,int capacity) {
-            this.parkingLotObserver = new ArrayList();
-            unOccupiedSlotList = new ArrayList<Integer>();
-            parkingLots = new ArrayList<ParkingLot>();
-            parkingLot = new ParkingLot(capacity);
-            this.actualCapacity = capacity*noOfLots;
-            this.noOfLots = noOfLots;
-            IntStream.range(0, noOfLots).forEach(slotNumber -> this.parkingLots.add(new ParkingLot(actualCapacity)));
+    public ParkingLotSystem(int noOfLots,int capacity) {
+        this.parkingLotObserver = new ArrayList();
+        unOccupiedSlotList = new ArrayList<Integer>();
+        parkingLots = new ArrayList<ParkingLot>();
+        parkingLot = new ParkingLot(capacity);
+        this.actualCapacity = capacity*noOfLots;
+        this.noOfLots = noOfLots;
+        IntStream.range(0, noOfLots).forEach(slotNumber -> this.parkingLots.add(new ParkingLot(actualCapacity)));
+    }
+
+    public ParkingLotSystem() {
+        this.parkingLots = new ArrayList<>();
+    }
+
+    public void setCapacity(int capacity) {
+        this.actualCapacity = capacity;
+    }
+
+    public void registerParkingLotObserver(ParkingLotObserver observer) {
+        this.parkingLotObserver.add(observer);
+
+    }
+
+    public void park(Vehicle vehicle, ParkingStrategy strategy) throws ParkingLotException {
+        AtomicReference<Integer> totalSlotOccupied = new AtomicReference<>(0);
+        parkingLots.stream().forEach(parkingLot1 -> totalSlotOccupied.updateAndGet(v -> v + parkingLot1.noOfVehicleParked));
+        if (totalSlotOccupied.get() == actualCapacity) {
+            for (ParkingLotObserver observer : parkingLotObserver)
+                observer.capacityIsFull();
+            throw new ParkingLotException("Parking lot is full", ParkingLotException.ExceptionType.PARKING_LOT_FULL);
         }
-
-        public ParkingLotSystem() {
-            this.parkingLots = new ArrayList<>();
-         }
-
-        public void setCapacity(int capacity) {
-            this.actualCapacity = capacity;
+        parkingLots = strategy.parkVehicle(parkingLots, vehicle);
+    }
+    public void park(Vehicle vehicleDetails) throws ParkingLotException {
+        if (mapData.size() == actualCapacity) {
+            parkingLotObserver.capacityIsFull();
+            throw new ParkingLotException("Parking Lot Is Full");
         }
+        vehicleDetails.getType().carParking(this, vehicleDetails);
+    }
 
-        public void registerParkingLotObserver(ParkingLotObserver observer) {
-            this.parkingLotObserver.add(observer);
+    public Object unPark(Object vehicle) throws ParkingLotException {
+        Integer positionOfVehicle = parkingLot.vehicleLocation(vehicle);
+        ParkingSlot slot = (ParkingSlot) parkingLot.vehicleSlotMap.remove(positionOfVehicle);
+        parkingLot.unOccupiedSlotList.add(positionOfVehicle);
+        parkingLot.unOccupiedSlotList.sort(Integer::compareTo);
+        return slot.vehicle;
+    }
 
+    public boolean isVehicleParked(Object vehicle) {
+        for (int i = 0; i < mapData.size(); i++) {
+            if (mapData.get(i) == vehicle)
+                return true;
         }
+        return false;
+    }
 
-        public void park(Vehicle vehicle, ParkingStrategy strategy) throws ParkingLotException {
-            AtomicReference<Integer> totalSlotOccupied = new AtomicReference<>(0);
-            parkingLots.stream().forEach(parkingLot1 -> totalSlotOccupied.updateAndGet(v -> v + parkingLot1.noOfVehicleParked));
-            if (totalSlotOccupied.get() == actualCapacity) {
-                for (ParkingLotObserver observer : parkingLotObserver)
-                    observer.capacityIsFull();
-                throw new ParkingLotException("Parking lot is full", ParkingLotException.ExceptionType.PARKING_LOT_FULL);
+    public int getSlotNo (Object vehicle){
+        for (Map.Entry<Integer, Object> entry : mapData.entrySet()) {
+            if (vehicle.equals(entry.getValue())) {
+                key = entry.getKey();
             }
-            parkingLots = strategy.parkVehicle(parkingLots, vehicle);
         }
-
-        public Object unPark(Object vehicle) throws ParkingLotException {
-            Integer positionOfVehicle = parkingLot.vehicleLocation(vehicle);
-            ParkingSlot slot = (ParkingSlot) parkingLot.vehicleSlotMap.remove(positionOfVehicle);
-            parkingLot.unOccupiedSlotList.add(positionOfVehicle);
-            parkingLot.unOccupiedSlotList.sort(Integer::compareTo);
-            return slot.vehicle;
-        }
-
-        public boolean isVehicleParked(Object vehicle) {
-            for (int i = 0; i < mapData.size(); i++) {
-                if (mapData.get(i) == vehicle)
-                    return true;
-            }
-            return false;
-        }
-
-        public int getSlotNo (Object vehicle){
-            for (Map.Entry<Integer, Object> entry : mapData.entrySet()) {
-                if (vehicle.equals(entry.getValue())) {
-                    key = entry.getKey();
-                }
-            }
-            return key;
-        }
+        return key;
+    }
 
     public ArrayList<VehicleDTO> findCarsWithColor(Vehicle.VehicleColor vehicleColor, Vehicle.VehicleType vehicleType)  {
         ArrayList<ParkingSlot> slotArrayList = new ArrayList<>();
@@ -116,6 +123,7 @@ public class ParkingLotSystem {
         }
         return timeList;
     }
+
     public ParkingLot getParkedVehicleLot(Object vehicle) {
         ParkingLot parkingLotWithParkedVehicle = parkingLotsList.stream()
                 .filter(parkingLot -> parkingLot.isVehiclePresent(vehicle))
@@ -130,7 +138,7 @@ public class ParkingLotSystem {
                 .filter(integerVehicleEntry -> integerVehicleEntry.getValue().lot==lotNumber)
                 .collect(Collectors.toMap(o -> o.getKey(), o -> o.getValue()));
         lotData=lotData.entrySet().stream()
-                .filter(data->data.getValue().Drivertype==handicapDriver)
+                .filter(data->data.getValue().type==handicapDriver)
                 .collect(Collectors.toMap(o -> o.getKey(), o -> o.getValue()));
         return lotData;
     }
@@ -149,6 +157,10 @@ public class ParkingLotSystem {
                     return false;
                 })
                 .count();
+    }
+
+    public Map<Integer, Object> getAllDetailsOfVehicles() {
+        return mapData;
     }
 }
 
