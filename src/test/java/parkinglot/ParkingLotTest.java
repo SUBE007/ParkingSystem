@@ -10,6 +10,7 @@ import parkingstrategy.*;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ParkingLotTest {
     ParkingLotSystem parkingLotSystem = null;
@@ -109,6 +110,14 @@ public class ParkingLotTest {
         }catch (ParkingLotException e){
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void givenCars_whenParkedCars_shouldReturnPark1OrPark5Lot() throws ParkingLotException {
+        Vehicle vehicle1 = new Vehicle( "UP44 B007",Vehicle.VehicleColor.BLUE, Vehicle.VehicleType.BMW,LocalTime.now());
+        parkingLotSystem.park(vehicle1,new NormalParkingStrategy());
+        Map<Integer, Vehicle> lotData = parkingLotSystem.getLotData(1,DriverType.HANDICAP);
+        Assert.assertEquals(1,lotData.size());
     }
 }
 

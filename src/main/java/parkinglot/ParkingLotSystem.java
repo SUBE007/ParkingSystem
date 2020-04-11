@@ -40,8 +40,7 @@ public class ParkingLotSystem {
 
         public ParkingLotSystem() {
             this.parkingLots = new ArrayList<>();
-            this.assignLot = new AssignLot();
-        }
+         }
 
         public void setCapacity(int capacity) {
             this.actualCapacity = capacity;
@@ -123,6 +122,33 @@ public class ParkingLotSystem {
                 .findFirst()
                 .orElse(null);
         return parkingLotWithParkedVehicle;
+    }
+
+    public Map<Integer, Vehicle> getLotData(int lotNumber, DriverType handicapDriver){
+        Map<Integer, Vehicle> lotData;
+        lotData=mapData.entrySet().stream()
+                .filter(integerVehicleEntry -> integerVehicleEntry.getValue().lot==lotNumber)
+                .collect(Collectors.toMap(o -> o.getKey(), o -> o.getValue()));
+        lotData=lotData.entrySet().stream()
+                .filter(data->data.getValue().Drivertype==handicapDriver)
+                .collect(Collectors.toMap(o -> o.getKey(), o -> o.getValue()));
+        return lotData;
+    }
+
+    private void assignLot(Vehicle vehicle){
+                mapData.entrySet()
+                .stream()
+                .filter(data-> (data.getValue() == vehicle))
+                .map(values -> {
+                    for (int j=1;j<noOfLots;j++){
+                        if (values.getKey() <= j*(noOfLots)){
+                            vehicle.lot = j;
+                            break;
+                        }
+                    }
+                    return false;
+                })
+                .count();
     }
 }
 
